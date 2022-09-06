@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.16;
+pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -15,14 +15,14 @@ contract Sevn is ERC20, Ownable, Mintable{
         _mint(msg.sender, preMineSupply);
     }
 
-    function burn(uint256 _amount) public onlyOwner {
-        _burn(msg.sender, _amount);
-    }
-
     function mint(address _to, uint256 _amount) public onlyMinter returns(bool) {
         _mint(_to, _amount);
         require(totalSupply() <= maxSupply, "SEVN: totalSupply can not > maxSupply");
         return true;
+    }
+
+    function burn(uint256 _amount) public onlyOwner {
+        _burn(msg.sender, _amount);
     }
 
     function addMinter(address _minter) public onlyOwner returns (bool) {
@@ -34,5 +34,4 @@ contract Sevn is ERC20, Ownable, Mintable{
         require(_minter != address(0), "SEVN: _minter is the zero address");
         return _delMinter(_minter);
     }
-    
 }   
