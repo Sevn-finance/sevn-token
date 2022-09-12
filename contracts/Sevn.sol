@@ -7,8 +7,8 @@ import "./library/Mintable.sol";
 
 contract Sevn is ERC20, Ownable, Mintable{
 
-    uint256 public constant preMineSupply = 10000000 * 1e18; // 10 000 000
-    uint256 public constant maxSupply = 500000000 * 1e18; // 500 000 000
+    uint256 public constant preMineSupply = 12000000 * 1e18; // 12 000 000
+    uint256 public constant maxSupply = 350000000 * 1e18; // 350 000 000
 
     constructor(string memory name, string memory symbol) ERC20(name, symbol){
         _addMinter(msg.sender);
