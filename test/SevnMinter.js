@@ -13,10 +13,10 @@ contract('Sevn', accounts => {
 
     it('deployed', async() => {
         const totalSupply = await instance.totalSupply();
-        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(10000000).multipliedBy(decimals).toFixed(), 'balance wrong');
+        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(45350000).multipliedBy(decimals).toFixed(), 'balance wrong');
 
         const balanceOfOwner = await instance.balanceOf(accounts[0]);
-        assert.equal(BigNumber(balanceOfOwner).toFixed(),BigNumber(10000000).multipliedBy(decimals).toFixed(), 'balance wrong');
+        assert.equal(BigNumber(balanceOfOwner).toFixed(),BigNumber(45350000).multipliedBy(decimals).toFixed(), 'balance wrong');
         
         let isMinter = await instance.isMinter.call(accounts[0]);
         assert.equal(isMinter, true, 'Owner is not minter');
@@ -61,7 +61,7 @@ contract('Sevn', accounts => {
 
         await instance.mint(accounts[0], amount, {from: accounts[1]});
         const totalSupply = await instance.totalSupply();
-        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(310000000).multipliedBy(decimals).toFixed(), 'balance wrong');
+        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(345350000).multipliedBy(decimals).toFixed(), 'balance wrong');
 
 
         await truffleAssert.fails(
@@ -79,7 +79,7 @@ contract('Sevn', accounts => {
 
         await instance.burn(amount);
         const totalSupply = await instance.totalSupply();
-        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(300000000).multipliedBy(decimals).toFixed(), 'balance wrong');
+        assert.equal(BigNumber(totalSupply).toFixed(),BigNumber(335350000).multipliedBy(decimals).toFixed(), 'balance wrong');
     });
 
     it('delMinter', async() => {
